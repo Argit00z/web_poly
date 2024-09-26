@@ -11,9 +11,9 @@
     <header>
         <h1 class="title">Fitness</h1>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="./index.html">Главная</a></li>
-                <li class="nav-item"><a href="./feedback.html">Обратная связь</a></li>
-                <li class="nav-item"><a href="./login.html">Авторизация</a></li>
+            <li class="nav-item"><a href="./index.php">Главная</a></li>
+            <li class="nav-item"><a href="./feedback.php">Обратная связь</a></li>
+            <li class="nav-item"><a href="./login.php">Авторизация</a></li>
             </ul>
     </header>
 
