@@ -36,8 +36,6 @@ header {
 footer {
     background-color: #333;
     color: white;
-    
-    
 }
 
 img {
@@ -69,25 +67,67 @@ th, td {
     padding: 20px;
 }
 
-.feedback{
+.feedback {
     text-align: center;
 }
 
-form{
+.feedback-response {
+    text-align: center;
+    padding: 20px;
+    background-color: antiquewhite;
+    width: max-content;
+    margin: 20px auto;
+}
+
+form {
     display: block;
     background-color: antiquewhite;
     width: max-content;
-    
     padding: 20px;
     margin: 10px auto 10px auto;
 }
 
-main{
+main {
     text-align: center;
 }
 
-.login {
-    text-align: center;
-    margin-bottom: 122px;
-    margin-top: 100px;
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
 }
+
+form label {
+    display: inline-block;
+    width: 200px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form select,
+form textarea {
+    width: 300px;
+}
+
+form input[type="radio"] {
+    width: auto;
+}
+
+form input[type="checkbox"] {
+    width: auto;
+}
+
+form button {
+    display: block;
+    margin: 0 auto;
+}
+
+a.selected_menu {
+    background-color: #ddd;
+    color: black;
+}
+
+a {
+    padding-left: 20px;
+}
+
+

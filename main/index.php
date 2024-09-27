@@ -1,15 +1,11 @@
 <?php
-
+$current_page = 'home';
 $title = "Моя домашняя страница";
 
 date_default_timezone_set('Europe/Moscow');
 $date = date("d.m.Y в H-i:s");
 
-$menuItems = [
-    ['link' => './index.php', 'text' => 'Главная'],
-    ['link' => './feedback.php', 'text' => 'Обратная связь'],
-    ['link' => './login.php', 'text' => 'Авторизация']
-];
+
 
 $s = date("s");
 
@@ -22,7 +18,12 @@ if ($os == 0) {
 }
 
 $imgTag = $name;
-?>
+
+$fitness_items = ['Гиря', 'беговая дорожка', 'турник']
+
+ ?>
+
+
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -39,11 +40,71 @@ $imgTag = $name;
 
 <header>
     <h1 class="title">Fitness</h1>
+    
     <ul class="nav-menu">
-        <?php foreach ($menuItems as $item): ?>
-            <li class="nav-item"><a href="<?php echo $item['link']; ?>"><?php echo $item['text']; ?></a></li>
-        <?php endforeach; ?>
-    </ul>
+        
+        <li>
+                        <a href="<?php
+                        // Переменные для ссылки
+                        $name = 'Главная'; // текст ссылки
+                        $link = 'index.php'; // адрес ссылки
+                        
+                        // Выводим адрес ссылки
+                        echo $link;
+                        ?>" <?php
+                        // Если это текущая страница, добавляем класс "selected_menu"
+                        if ($current_page == 'home') {
+                            echo ' class="selected_menu"';
+                        }
+                        ?>>
+                            <?php
+                            // Выводим текст ссылки
+                            echo $name;
+                            ?>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?php
+                        // Переменные для ссылки
+                        $name = 'Войти'; // текст ссылки
+                        $link = 'login.php'; // адрес ссылки
+                        // Выводим адрес ссылки
+                        echo $link;
+                        ?>" <?php
+                        // Если это текущая страница, добавляем класс "selected_menu"
+                        if ($current_page =='login') {
+                            echo ' class="selected_menu"';
+                        }
+                        ?>>
+                            <?php
+                            // Выводим текст ссылки
+                            echo $name;
+                            ?>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?php
+                        // Переменные для ссылки
+                        $name = 'Обратная связь'; // текст ссылки
+                        $link = 'feedback.php'; // адрес ссылки
+                        
+                        // Выводим адрес ссылки
+                        echo $link;
+                        ?>" <?php
+                        // Если это текущая страница, добавляем класс "selected_menu"
+                        if ($current_page == 'feedback') {
+                            echo ' class="selected_menu"';
+                        }
+                        ?>>
+                            <?php
+                            // Выводим текст ссылки
+                            echo $name;
+                            ?>
+                        </a>
+                    </li>
+        </ul>
 </header>
 
 <main>
@@ -68,6 +129,13 @@ $imgTag = $name;
             </tr>
         </table>
     </section>
+    <ul style="margin-left: 10px;">
+        <?php
+        foreach ($fitness_items as $item) {
+            echo "<li>$item</li>";
+        }
+        ?>
+    </ul>
 </main>
 
 <footer>

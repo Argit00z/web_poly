@@ -1,3 +1,6 @@
+<?php
+    $current_page = 'login';
+ ?>
 <html lang="ru"></html>
 <head>
     <meta charset="UTF-8">
@@ -10,11 +13,70 @@
 
     <header>
         <h1 class="title">Fitness</h1>
-            <ul class="nav-menu">
-            <li class="nav-item"><a href="./index.php">Главная</a></li>
-            <li class="nav-item"><a href="./feedback.php">Обратная связь</a></li>
-            <li class="nav-item"><a href="./login.php">Авторизация</a></li>
-            </ul>
+        <ul class="nav-menu">
+        
+        <li>
+                        <a href="<?php
+                        // Переменные для ссылки
+                        $name = 'Главная'; // текст ссылки
+                        $link = 'index.php'; // адрес ссылки
+                        
+                        // Выводим адрес ссылки
+                        echo $link;
+                        ?>" <?php
+                        // Если это текущая страница, добавляем класс "selected_menu"
+                        if ($current_page == 'home') {
+                            echo ' class="selected_menu"';
+                        }
+                        ?>>
+                            <?php
+                            // Выводим текст ссылки
+                            echo $name;
+                            ?>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?php
+                        // Переменные для ссылки
+                        $name = 'Войти'; // текст ссылки
+                        $link = 'login.php'; // адрес ссылки
+                        // Выводим адрес ссылки
+                        echo $link;
+                        ?>" <?php
+                        // Если это текущая страница, добавляем класс "selected_menu"
+                        if ($current_page =='login') {
+                            echo ' class="selected_menu"';
+                        }
+                        ?>>
+                            <?php
+                            // Выводим текст ссылки
+                            echo $name;
+                            ?>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?php
+                        // Переменные для ссылки
+                        $name = 'Обратная связь'; // текст ссылки
+                        $link = 'feedback.php'; // адрес ссылки
+                        
+                        // Выводим адрес ссылки
+                        echo $link;
+                        ?>" <?php
+                        // Если это текущая страница, добавляем класс "selected_menu"
+                        if ($current_page == 'feedback') {
+                            echo ' class="selected_menu"';
+                        }
+                        ?>>
+                            <?php
+                            // Выводим текст ссылки
+                            echo $name;
+                            ?>
+                        </a>
+                    </li>
+        </ul>
     </header>
 
     <main>
