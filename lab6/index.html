@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма обратной связи</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1 class="title">JavaScript</h1>
+        <!-- <ul class="nav-menu">
+            <li class="nav-item"><a href="./index.php">Главная</a></li>
+            <li class="nav-item"><a href="./feedback.php">Обратная связь</a></li>
+            <li class="nav-item"><a href="./login.php">Авторизация</a></li>
+        </ul> -->
+    </header>
+<br>
+<h1>Результаты работы JavaScript функций</h1>
+
+<div class="container">
+    <h2>Возведение в степень</h2>
+    <label for="base">Основание (x):</label>
+    <input type="number" id="base" value="2"><br>
+    <label for="exponent">Показатель степени (n):</label>
+    <input type="number" id="exponent" value="3"><br>
+    <button onclick="showPow()">Вычислить x^n</button>
+    <p id="powResult"></p>
+</div>
+
+<div class="container">
+    <h2>Наибольший общий делитель (НОД)</h2>
+    <label for="num1">Число a:</label>
+    <input type="number" id="num1" value="48"><br>
+    <label for="num2">Число b:</label>
+    <input type="number" id="num2" value="18"><br>
+    <button onclick="showGCD()">Вычислить НОД</button>
+    <p id="gcdResult"></p>
+</div>
+
+<div class="container">
+    <h2>Наименьшая цифра числа</h2>
+    <label for="number">Число:</label>
+    <input type="number" id="number" value="379"><br>
+    <button onclick="showMinDigit()">Найти наименьшую цифру</button>
+    <p id="minDigitResult"></p>
+</div>
+
+<div class="container">
+    <h2>Правильное окончание для количества записей</h2>
+    <label for="recordsCount">Количество записей:</label>
+    <input type="number" id="recordsCount" value="5"><br>
+    <button onclick="showPluralize()">Показать результат</button>
+    <p id="pluralizeResult"></p>
+</div>
+
+<div class="container">
+    <h2>Число Фибоначчи</h2>
+    <label for="fibNumber">Число n:</label>
+    <input type="number" id="fibNumber" value="10"><br>
+    <button onclick="showFibonacci()">Вычислить число Фибоначчи</button>
+    <p id="fibonacciResult"></p>
+</div>
+
+</body>
+<footer>
+    <div class="container">
+        &copy; 2024 My Company. All rights reserved.
+    </div>
+</footer>
+
+<script src="./sqript.js"></script>
+
+</html>
