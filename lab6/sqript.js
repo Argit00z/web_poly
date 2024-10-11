@@ -49,12 +49,18 @@ function pluralizeRecords(n) {
     let recordText;
     if (n % 10 == 1 && n % 100 != 11) {
         recordText = "запись";
+        findText = "найдена";
+        wasText = "была";
     } else if ([2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100)) {
         recordText = "записи";
+        findText = "найдены";
+        wasText = "были";
     } else {
         recordText = "записей";
+        findText = "найдено";
+        wasText = "было";
     }
-    return `В результате выполнения запроса было найдено ${n} ${recordText}`;
+    return `В результате выполнения запроса ${wasText} ${findText} ${n} ${recordText}`;
 }
 
 function showPluralize() {
