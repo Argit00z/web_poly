@@ -4,6 +4,9 @@ include 'header.html';
 $name = isset($_GET['name']) ? $_GET['name'] : '';
 $email = isset($_GET['email']) ? $_GET['email'] : '';
 $source = isset($_GET['source']) ? $_GET['source'] : '';
+$attachment = isset($_GET['attachment']) ? $_GET['attachment'] : '';
+
+
 ?>
 <form action="home.php" method="post">
     <label for="name">ФИО:</label>
@@ -20,6 +23,8 @@ $source = isset($_GET['source']) ? $_GET['source'] : '';
         <option value="propose">Предложение</option>
         <option value="complaint">Жалоба</option>
     </select><br>
+    <label for="attachment">Вложения:</label><br>
+        <input type="file" id="attachment" name="attachment"><br><br>
     
     <label for="agreement">
         <input type="checkbox" id="agreement" name="agreement" required> Даю согласие на обработку данных

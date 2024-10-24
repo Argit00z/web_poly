@@ -7,6 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message = htmlspecialchars($_POST['message']);
     $category = htmlspecialchars($_POST['category']);
     $source = htmlspecialchars($_POST['source']);
+    $attachment = htmlspecialchars($_POST['attachment']);
+
+
     
     echo "<p>Здравствуйте, $name</p>";
     
