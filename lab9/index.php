@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вариант 4</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <header>
-        <img style="width: 80px" src="800x400.jpeg" alt="Логотип университета">
+        <img style="width: 100px; float: left;" src="800x400.jpeg" alt="Логотип университета">
         <h1>Галстян Арман Артурович - 231-361 - Лабораторная работа №9, Вариант 4</h1>
     </header>
     <main>
         <?php
-            $start_value = -10; // начальное значение аргумента
+            $start_value = -5; // начальное значение аргумента
             $encounting = 100; // количество вычисляемых значений
             $step = 2; // шаг изменения аргумента
             $min_value = -1000; // минимальное значение функции для остановки
             $max_value = 1000; // максимальное значение функции для остановки
-            $type = 'A'; // тип верстки ('A', 'B', 'C', 'D', 'E')
+            $type = 'Блочная';
 
             $x = $start_value;
             $values = [];
             for ($i = 0; $i < $encounting; $i++, $x += $step) {
                 if ($x <= 10) {
+                    if ($x == 5) {
+                        $f = "error";
+                        continue;
+                    }
                     $f = (5 - $x) / (1 - $x / 5);
                 } elseif ($x < 20) {
                     $f = $x * $x / 4 + 7;
@@ -33,34 +37,62 @@
                 $f = round($f, 3);
                 if ($f == INF || $f == -INF || is_nan($f)) {
                     $f = 'error';
+                
                 }
                 if ($f != 'error' && ($f <= $min_value || $f >= $max_value)) {
                     break;
                 }
                 $values[] = ['x' => $x, 'f' => $f];
             }
-
+            
+            // if ($f == "error") {
+            //     switch ($type) {
+            //         case 'Простая верстка текстом':
+            //             echo "f($x) = error<br>";
+            //             break;
+            //         case 'Маркированный список':
+            //             if ($i == 0) echo "<ul>";
+            //             echo "<li>f($x) = error</li>";
+            //             echo "</ul>";
+            //             break;
+            //         case 'Нумерованный список':
+            //             if ($i == 0) echo "<ol>";
+            //             echo "<li>f($x) = error</li>";
+            //             echo "</ol>";
+            //             break;
+            //         case 'Табличная верстка':
+            //             if ($i == 0) echo "<table border='1' style='border-collapse: collapse; margin-top: 10px'><tr><th>№</th><th>x</th><th>f(x)</th></tr>";
+            //             echo "<tr><td>" . ($i + 1) . "</td><td>$x</td><td>error</td></tr>";
+            //             echo "</table>";
+            //             break;
+            //         case 'Блочная верстка':
+            //             echo "<div style='float: left; border: 2px solid red; margin-top: 10px; margin-right: 8px;'>f($x) = error</div>";
+            //             break;
+            //         }
+            //         break;
+            //     }
+           
             switch ($type) {
-                case 'A':
+                case 'Простая':
                     foreach ($values as $value) {
                         echo "f({$value['x']}) = {$value['f']}<br>";
                     }
                     break;
-                case 'B':
+                case 'Ненумерованный список':
                     echo '<ul>';
                     foreach ($values as $value) {
                         echo "<li>f({$value['x']}) = {$value['f']}</li>";
                     }
                     echo '</ul>';
                     break;
-                case 'C':
+                case 'Нумерованный список':
                     echo '<ol>';
                     foreach ($values as $value) {
                         echo "<li>f({$value['x']}) = {$value['f']}</li>";
                     }
                     echo '</ol>';
                     break;
-                case 'D':
+                case 'Таблица':
                     echo '<table border="1" cellspacing="0" cellpadding="5">';
                     echo '<tr><th>#</th><th>x</th><th>f(x)</th></tr>';
                     foreach ($values as $index => $value) {
@@ -68,7 +100,7 @@
                     }
                     echo '</table>';
                     break;
-                case 'E':
+                case 'Блочная':
                     foreach ($values as $value) {
                         echo "<div style='float: left; border: 2px solid red; margin-right: 8px; padding: 5px;'>f({$value['x']}) = {$value['f']}</div>";
                     }
