@@ -2,14 +2,29 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Text Analyzer</title>
+    <title>Анализ текста</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Анализатор текста</h1>
-    <form action="result.php" method="post">
-        <label for="text">Введите текст для анализа:</label><br>
-        <textarea id="text" name="data" rows="10" cols="50"></textarea><br><br>
-        <button type="submit">Анализировать</button>
-    </form>
+    <div class="container">
+        <h1>Анализ текста</h1>
+        <form method="post" action="result.php">
+            <label for="inputText">Введите текст:</label><br>
+            <textarea id="inputText" name="inputText" rows="5" cols="40"></textarea><br>
+            <input type="submit" value="Анализировать">
+        </form>
+    </div>
 </body>
 </html>

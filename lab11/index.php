@@ -70,7 +70,7 @@
 <body>
 <div id="main_menu">
     <?php
-    $html_type = isset($_GET['html_type']) ? $_GET['html_type'] : 'TABLE';
+    $html_type = isset($_GET['html_type']) ? $_GET['html_type'] : '';
     $content = isset($_GET['content']) ? $_GET['content'] : '';
 
     echo '<a href="?html_type=TABLE' . ($content ? '&content=' . $content : '') . '"';
@@ -86,7 +86,7 @@
 <div id="content_wrapper">
     <div id="product_menu">
         <?php
-        echo '<a href="/' . ($html_type ? '?html_type=' . $html_type : '') . '"';
+        echo '<a href="?' . ($html_type ? 'html_type=' . $html_type : '') . '"';
         if (!$content) echo ' class="selected"';
         echo '>Вся таблица умножения</a>';
 
@@ -159,7 +159,7 @@
 
         if ($html_type == 'TABLE') {
             echo generateTable($content ? (int)$content : null, true);
-        } else {
+        } else if ($html_type == 'DIV') {
             echo generateTable($content ? (int)$content : null, false);
         }
         ?>
@@ -167,7 +167,7 @@
 </div>
 
 <div id="footer">
-    <p>Тип верстки: <?php echo $html_type == 'TABLE' ? 'Табличная' : 'Блочная'; ?></p>
+    <p>Тип верстки: <?php echo $html_type == 'TABLE' ? 'Табличная' : ($html_type == 'DIV' ? 'Блочная' : ''); ?></p>
     <p>Название таблицы: <?php echo $content ? 'Таблица умножения на ' . $content : 'Вся таблица умножения'; ?></p>
     <p>Дата и время: <?php echo date('Y-m-d H:i:s'); ?></p>
 </div>

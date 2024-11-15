@@ -3,77 +3,100 @@
 function analyzeText($text) {
     // Проверка на пустой текст
     if (empty($text)) {
-        echo 'Пожалуйста, введите текст для анализа.<br>';
+        echo '<p style="color:red;">Нет текста для анализа.</p>';
         return;
     }
 
-    // Подсчёт количества символов (UTF-8)
+    echo 'Исходный текст: <br><div style="border: 1px solid blue; padding: 10px; display: inline-block;"><i style="color:blue;">' . htmlspecialchars($text) . '</i></div><br>';
+
+    echo '<table border="1" cellpadding="5" cellspacing="0" style="margin: 0 auto;">';
+
+  
     $charCount = preg_match_all('/./us', $text, $matches) ? count($matches[0]) : 0;
-    echo 'Количество символов: ' . $charCount . '<br>';
+    echo '<tr><td>Количество символов</td><td>' . $charCount . '</td></tr>';
 
-    // Подсчёт количества букв
     $letterCount = preg_match_all('/\p{L}/u', $text, $matches) ? count($matches[0]) : 0;
-    echo 'Количество букв: ' . $letterCount . '<br>';
+    echo '<tr><td>Количество букв</td><td>' . $letterCount . '</td></tr>';
 
-    // Подсчёт количества строчных букв
+  
     $lowerCount = preg_match_all('/\p{Ll}/u', $text, $matches) ? count($matches[0]) : 0;
-    echo 'Количество строчных букв: ' . $lowerCount . '<br>';
+    echo '<tr><td>Количество строчных букв</td><td>' . $lowerCount . '</td></tr>';
 
-    // Подсчёт количества заглавных букв
     $upperCount = preg_match_all('/\p{Lu}/u', $text, $matches) ? count($matches[0]) : 0;
-    echo 'Количество заглавных букв: ' . $upperCount . '<br>';
+    echo '<tr><td>Количество заглавных букв</td><td>' . $upperCount . '</td></tr>';
 
-    // Подсчёт количества знаков препинания
+ 
     $punctuationCount = preg_match_all('/\p{P}/u', $text, $matches) ? count($matches[0]) : 0;
-    echo 'Количество знаков препинания: ' . $punctuationCount . '<br>';
+    echo '<tr><td>Количество знаков препинания</td><td>' . $punctuationCount . '</td></tr>';
 
-    // Подсчёт количества цифр
+    
     $digitCount = preg_match_all('/\p{N}/u', $text, $matches) ? count($matches[0]) : 0;
-    echo 'Количество цифр: ' . $digitCount . '<br>';
+    echo '<tr><td>Количество цифр</td><td>' . $digitCount . '</td></tr>';
 
-    // Подсчёт количества слов
+    
     $wordCount = str_word_count($text, 0, 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя');
-    echo 'Количество слов: ' . $wordCount . '<br>';
+    echo '<tr><td>Количество слов</td><td>' . $wordCount . '</td></tr>';
 
-    // Подсчёт частоты символов
-    echo 'Частота символов:<br>';
+    
+    echo '<tr><td>Частота символов</td><td>';
     $charFrequency = array_count_values(preg_split('//u', $text, -1, PREG_SPLIT_NO_EMPTY));
     if ($charFrequency) {
         foreach ($charFrequency as $char => $freq) {
             echo htmlspecialchars($char) . ': ' . $freq . '<br>';
         }
     }
+    echo '</td></tr>';
 
-    // Подсчёт частоты слов
-    echo 'Частота слов:<br>';
+    
+    echo '<tr><td>Частота слов</td><td>';
     $words = preg_split('/\s+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
     $wordFrequency = array_count_values($words);
+    
+    
     if ($wordFrequency) {
+        ksort($wordFrequency);
         foreach ($wordFrequency as $word => $freq) {
             echo htmlspecialchars($word) . ': ' . $freq . '<br>';
         }
     }
+    echo '</td></tr>';
+
+    echo '</table>';
+
+    
+    
 }
 
-// Обработка текста пользователя
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $inputText = $_POST["inputText"] ?? '';
-    analyzeText($inputText);
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Анализ текста</title>
+    <title>Результат анализа текста</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Анализ текста</h1>
-    <form method="post" action="">
-        <label for="inputText">Введите текст:</label><br>
-        <textarea id="inputText" name="inputText" rows="5" cols="40"></textarea><br>
-        <input type="submit" value="Анализировать">
-    </form>
+    <div>
+        <h1>Результат анализа текста</h1>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $inputText = $_POST["inputText"] ?? '';
+            analyzeText($inputText);
+        }
+        ?>
+        <br>
+        <a href="index.html">Другой анализ</a>
+    </div>
 </body>
 </html>
