@@ -1,7 +1,5 @@
 <?php
-// Функция для анализа текста
 function analyzeText($text) {
-    // Проверка на пустой текст
     if (empty($text)) {
         echo '<p style="color:red;">Нет текста для анализа.</p>';
         return;
@@ -62,9 +60,6 @@ function analyzeText($text) {
     echo '</td></tr>';
 
     echo '</table>';
-
-    
-    
 }
 
 ?>
@@ -79,15 +74,26 @@ function analyzeText($text) {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
             text-align: center;
         }
+        
+        .main{
+            width: 500px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;s
+        }
     </style>
 </head>
 <body>
-    <div>
+    <div class="main">
         <h1>Результат анализа текста</h1>
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {

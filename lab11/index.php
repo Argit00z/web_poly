@@ -45,8 +45,12 @@
         }
         .ttRow, .ttSingleRow {
             display: flex;
-            flex-direction: row;
+            flex-direction: column; /* Изменение: вертикальное расположение */
             margin: 10px 0;
+        }
+        .ttRow {
+            flex-direction: row;
+            flex-wrap: wrap;
         }
         .ttCell {
             border: 1px solid #000;
@@ -54,6 +58,7 @@
             margin: 2px;
             text-align: center;
             width: 50px;
+            display: inline-block;
         }
         .ttCell a {
             text-decoration: none;
@@ -68,7 +73,7 @@
     </style>
 </head>
 <body>
-<div id="main_menu">
+<div id="main_menu" style="background-color: grey;">
     <?php
     $html_type = isset($_GET['html_type']) ? $_GET['html_type'] : '';
     $content = isset($_GET['content']) ? $_GET['content'] : '';
@@ -105,11 +110,12 @@
             $output = $isTable ? '<table>' : '';
 
             if ($number === null) {
+                // Генерация вертикальной таблицы для всех чисел
                 for ($i = 2; $i <= 9; $i++) {
-                    $output .= generateRow($i, $isTable);
+                    $output .= generateColumn($i, $isTable);
                 }
             } else {
-                $output .= generateRow($number, $isTable);
+                $output .= generateColumn($number, $isTable);
             }
 
             $output .= $isTable ? '</table>' : '';
@@ -117,9 +123,9 @@
             return $output;
         }
 
-        function generateRow($number, $isTable)
+        function generateColumn($number, $isTable)
         {
-            $output = $isTable ? '<tr>' : '<div class="ttSingleRow">';
+            $output = $isTable ? '<tr>' : '<div class="ttRow">'; // Для блочной верстки: .ttRow
 
             for ($i = 1; $i <= 9; $i++) {
                 if ($isTable) {
@@ -128,36 +134,36 @@
                     $output .= '<div class="ttCell">';
                 }
                 if ($number <= 9) {
-                    $output .= '<a href="?content=' . $number . '">' . $number . '</a>';
+                    $output .= '<a href="?content=' . $number . '&html_type=TABLE">' . $number . '</a>';
                 } else {
                     $output .= $number;
                 }
                 $output .= ' x ';
                 if ($i <= 9) {
-                    $output .= '<a href="?content=' . $i . '">' . $i . '</a>';
+                    $output .= '<a href="?content=' . $i . '&html_type=TABLE">' . $i . '</a>';
                 } else {
                     $output .= $i;
                 }
                 $output .= ' = ';
                 $result = $number * $i;
                 if ($result <= 9) {
-                    $output .= '<a href="?content=' . $result . '">' . $result . '</a>';
+                    $output .= '<a href="?content=' . $result . '&html_type=TABLE">' . $result . '</a>';
                 } else {
                     $output .= $result;
                 }
                 if ($isTable) {
                     $output .= '</td>';
                 } else {
-                    $output .= '</div>';
+                    $output .= '</div>';  // Закрытие .ttCell
                 }
             }
 
-            $output .= $isTable ? '</tr>' : '</div>';
+            $output .= $isTable ? '</tr>' : '</div>'; // Закрытие .ttRow
 
             return $output;
         }
 
-        if ($html_type == 'TABLE') {
+        if ($html_type == 'TABLE' || !$html_type) {
             echo generateTable($content ? (int)$content : null, true);
         } else if ($html_type == 'DIV') {
             echo generateTable($content ? (int)$content : null, false);
@@ -166,7 +172,7 @@
     </div>
 </div>
 
-<div id="footer">
+<div id="footer" style="background-color: grey;">
     <p>Тип верстки: <?php echo $html_type == 'TABLE' ? 'Табличная' : ($html_type == 'DIV' ? 'Блочная' : ''); ?></p>
     <p>Название таблицы: <?php echo $content ? 'Таблица умножения на ' . $content : 'Вся таблица умножения'; ?></p>
     <p>Дата и время: <?php echo date('Y-m-d H:i:s'); ?></p>

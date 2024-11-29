@@ -1,0 +1,140 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: table;
+    min-height: 100vh;
+    width: 100%;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    
+}
+
+.nav-item a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    max-width: 70%;
+    margin: 50px 0 20px 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+th, td {
+    border: 1.2px solid #747474;
+    padding: 10px;
+}
+
+.title {
+    font-size: 50px;
+    margin-right: 50px;
+}
+
+.container {
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.feedback {
+    text-align: center;
+}
+
+.feedback-response {
+    text-align: center;
+    padding: 20px;
+    background-color: antiquewhite;
+    width: max-content;
+    margin: 20px auto;
+}
+
+form {
+    display: block;
+    background-color: antiquewhite;
+    width: max-content;
+    padding: 20px;
+    margin: 10px auto 10px auto;
+}
+
+main {
+    text-align: center;
+    min-height: calc(100vh - 158px);
+    
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+form label {
+    display: inline-block;
+    width: 200px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form select,
+form textarea {
+    width: 300px;
+}
+
+form input[type="radio"] {
+    width: auto;
+}
+
+form input[type="checkbox"] {
+    width: auto;
+}
+
+form button {
+    display: block;
+    margin: 0 auto;
+}
+
+a.selected_menu {
+    background-color: #ddd;
+    color: black;
+}
+
+a {
+    padding-left: 20px;
+}
+
+
